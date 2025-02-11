@@ -1,0 +1,12 @@
+{% extends 'Users/base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<div>
+    <p>{{ post.description }}</p>
+    <p>{{ post.location }}</p>
+    <p>{{ post.square }}</p>
+    <p>{{ post.capacity }}</p>
+</div>
+{% endblock %}

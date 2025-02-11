@@ -1,0 +1,16 @@
+@import url(style.css);
+@import url(add_venue.css);
+@import url(css_files/header/header.css);
+@import url(css_files/logo/logo.css);
+
+
+
+@import url(css_files/venue/__description/venue__description.css);
+@import url(css_files/venue/__image/venue__image.css);
+@import url(css_files/venue/__info/venue__info.css);
+@import url(css_files/venue/__location/venue__location.css);
+@import url(css_files/venue/__meta/venue__meta.css);
+@import url(css_files/venue/__title/venue__title.css);
+@import url(css_files/venue/venue.css);
+@import url(css_files/venue/__link/venue__link.css);
+@import url(css_files/venue/__span/venue__span.css);

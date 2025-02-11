@@ -1,0 +1,32 @@
+{% extends 'Users/base.html' %}
+
+{% block content %}
+
+<ul>
+    {% for post in posts %}
+    <a href="{% url 'catalog_placepage' venid=post.id %}" class="venue__link">
+    <li class="li_style">
+        <section class="venue">
+            {% for photo in photos %}
+            <img class="venue-image" src="{{ photo.image.url }}" width="200" height="200" >
+            {% endfor %}
+            <div class="venue__info">
+                <h2 class="venue__title">{{ post.name }}</h2>
+                <p class="venue__description">{{ post.description }}</p>
+                <p class="venue__location">{{ post.location }}</p>
+                
+            </div>
+            <div class="venue__meta">
+                <span class="venue__span">{{ post.square }}</span>
+                <span class="venue__span">{{ post.capacity }}</span>
+                <span class="venue__span">рейтинг </span>
+            
+            </div>
+        </section>
+    </li>
+    </a>
+    {% endfor %}
+    
+</ul>
+
+{% endblock %}

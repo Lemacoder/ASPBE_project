@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'reg_style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Регистрация</h2>
+            <p>Выберите тип аккаунта</p>
+            <div class="account-type">
+                <label><input type="radio" name="account" checked> Личный</label>
+                <label><input type="radio" name="account"> Представитель</label>
+            </div>
+            <form>
+                <label>Введите ФИО</label>
+                <input type="text" placeholder="ФИО" required>
+                
+                <label>Введите логин</label>
+                <input type="email" placeholder="Почта" required>
+                
+                <label>Введите пароль*</label>
+                <input type="password" placeholder="Пароль" required>
+                <small>Пароль должен содержать минимум 8 символов, a-z, A-Z, 0-9, |@#$%^&*</small>
+                
+                <label>Повторите пароль</label>
+                <input type="password" placeholder="Повторите пароль" required>
+                
+                <a href=""><button type="submit">&#10132;</button></a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

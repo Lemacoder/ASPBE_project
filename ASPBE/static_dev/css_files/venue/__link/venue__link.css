@@ -1,0 +1,12 @@
+.venue__link {
+    text-decoration: none; /* Отключение подчеркивания */
+    color: inherit; /* Наследуем цвет от родительского элемента, чтобы ссылка не была синей по умолчанию */
+}
+
+.venue__link:hover {
+    text-decoration: none; /* Убираем подчеркивание при наведении */
+}
+
+.venue__link:active {
+    color: darkred; /* Окрашивание после нажатия */
+}

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'imports.css' %}">
+</head>
+<body class="main_color">
+    <header class="header">
+        <a href="{% url 'holdingmainpage' %}" class="button-image">
+            <img class="logo" src="{% static 'svg/menu.svg' %}" alt="Логотип">
+        </a>
+        <a>
+            <img class="logo" src="{% static 'svg/chat.svg' %}" alt="Логотип">
+        </a>
+        <a>
+            <img class="logo" src="{% static 'svg/profile.svg' %}" alt="Логотип">
+        </a>
+
+    </header>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
+

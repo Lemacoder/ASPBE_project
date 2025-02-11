@@ -1,0 +1,113 @@
+.main_color {
+    background-color: #383838;
+    color:azure;
+    margin: 0px;
+}
+
+.venue {
+    background-color: #b8b8b8;
+    color: #000000;
+    padding: 20px;
+    margin: 20px;
+}
+
+.li_style {
+    list-style-type: none;
+}
+
+.top-bar {
+    background-color: #555;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.top-bar .icon {
+    width: 40px;
+    height: 40px;
+    background-color: #777;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 8px;
+    position: relative;
+    z-index: -100;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.card .actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.card .actions button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.center {
+    text-align: center;
+}
+.add-card {
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #555;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.add-card:hover {
+    background-color: #666;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}

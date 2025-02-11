@@ -1,0 +1,64 @@
+{% extends 'Holdings/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Add New Card Button -->
+    <div class="add-card">
+        <button id="openModal" class="btn">+</button>
+    </div>
+    
+    <ul>
+        {% for post in posts %}
+        <li class="li_style">
+            <div class="card">
+                <h3>{{ post.name }}</h3>
+                <p>{{ post.location }}</p>
+                <div class="actions">
+                    <button>🗑️</button> <!-- trasjjjkl;;kkh -->
+                    <button>👁️</button> <!-- eye -->
+                    <button>✏️</button> <!-- pen -->
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Добавление</h2>
+            <form class="modal-form">
+                <label for="name">Введите название:</label>
+                <input type="text" id="name" placeholder="MONKEY">
+
+                <label for="address">Введите адрес:</label>
+                <input type="text" id="address" placeholder="ул. Лесная, д.20, стр.5 м. Белорусская">
+
+                <label>Добавьте фотографии:</label>
+                <div class="photo-upload">
+                    <div class="photo-placeholder">+</div>
+                    <div class="photo-placeholder"></div>
+                    <div class="photo-placeholder"></div>
+                    <div class="photo-placeholder"></div>
+                </div>
+
+                <label for="description">Описание:</label>
+                <textarea id="description" rows="5" placeholder="Введите описание..."></textarea>
+
+                <!-- Навигация -->
+                <div class="modal-footer">
+                    <span>1/2</span>
+                    <button type="submit" class="next-btn">→</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<!-- Подключение JS -->
+<script type="text/javascript" src="{% static 'js/add_venue.js' %}"></script>
+{% endblock %}
