@@ -30,10 +30,10 @@
 
             <div class="login__check">
 
-               <a href="#" class="login__forgot">Забыли пароль?</a>
+               <a href="{% url 'recoveringcode' %}" class="login__forgot">Забыли пароль?</a>
             </div>
 
-            <button type="submit" class="login__button">Войти</button>
+            <button type="submit" class="login__button"><a href="{% url 'the_code' %}">Войти</a></button>
 
             <div class="login__register">
                Нет аккаунта? <a href="{% url 'first_step_registr' %}">Зарегестрироваться</a>

@@ -21,7 +21,7 @@ class Venues(models.Model):
     square = models.IntegerField()
     wardrobe = models.BooleanField()
     parking = models.BooleanField()
-    status = models.IntegerField()
+    status = models.IntegerField(default=0, editable=False)
 
     def __str__(self):
         return self.name

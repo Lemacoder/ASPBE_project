@@ -28,26 +28,17 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
+            <span id="closeModal" class="close" method="post">&times;</span>
             <h2>Добавление</h2>
-            <form class="modal-form">
-                <label for="name">Введите название:</label>
-                <input type="text" id="name" placeholder="MONKEY">
+            <form class="modal-form" action="{% url 'holdingmainpage' %}" method="post">
+                {% csrf_token %}
+ 
+                {% for f in form %}
+                <p><label for="{{ f.id_for_label }}">{{ f.label }}</label> {{ f }}</p>
+                <div class="form__error">{{ f.errors }}</div>
 
-                <label for="address">Введите адрес:</label>
-                <input type="text" id="address" placeholder="ул. Лесная, д.20, стр.5 м. Белорусская">
-
-                <label>Добавьте фотографии:</label>
-                <div class="photo-upload">
-                    <div class="photo-placeholder">+</div>
-                    <div class="photo-placeholder"></div>
-                    <div class="photo-placeholder"></div>
-                    <div class="photo-placeholder"></div>
-                </div>
-
-                <label for="description">Описание:</label>
-                <textarea id="description" rows="5" placeholder="Введите описание..."></textarea>
-
+                {% endfor %}
+                
                 <!-- Навигация -->
                 <div class="modal-footer">
                     <span>1/2</span>

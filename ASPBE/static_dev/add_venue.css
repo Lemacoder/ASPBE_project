@@ -11,7 +11,6 @@ body {
     margin: 20px;
     padding: 10px 20px;
     background-color: #333;
-    color: #fff;
     border: none;
     cursor: pointer;
   }
@@ -30,6 +29,7 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    color: black;
   }
   
   /* Контент модального окна */
