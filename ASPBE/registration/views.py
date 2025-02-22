@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-
+from .forms import AddUser
 # Create your views here.
 
 
@@ -9,7 +9,13 @@ def login(request):
     return render(request, 'log.html')
 
 def registr(request):
-    return render(request, 'reg.html')
+    if request.method == 'POST':
+        form = AddUser(request.POST,  request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = AddUser()
+    return render(request, 'reg.html', {'form': form})
 
 def log_in(request):
     return render(request, 'log_in.html')
