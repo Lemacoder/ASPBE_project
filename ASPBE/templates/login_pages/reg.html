@@ -1,0 +1,21 @@
+{% extends 'login_pages/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="registration">
+    <div class="registration__container">
+        <div class="registration__form-box">
+            <h2 class="registration__title">Регистрация</h2>
+            <form method="post" class="registration__form">
+                {% csrf_token %}
+                {% for f in form %}
+                <p><label for="{{ f.id_for_label }}">{{f.label}}: </label> {{ f }}</p>
+                <div>{{ f.errors }}</div>
+                {% endfor %}
+                <button class="registration__button" type="submit">Сохранить</button>
+            </form> 
+        </div>
+    </div>
+</div>
+{% endblock %}

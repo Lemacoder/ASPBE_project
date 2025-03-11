@@ -1,0 +1,5 @@
+.login__inputs {
+  row-gap: 1.25rem;
+  margin-bottom: 1rem;
+  display: grid;
+}

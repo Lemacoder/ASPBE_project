@@ -1,0 +1,13 @@
+.login__box {
+    grid-template-columns: 1fr max-content;
+    column-gap: .75rem;
+    align-items: center;
+    border: 2px solid hsla(0, 0%, 100%, .7);
+    padding-inline: 1.25rem;
+    border-radius: 4rem;
+    display: grid;
+}
+
+.login__box:focus-within {
+    background-color: hsla(0, 0%, 100%, .20);
+}

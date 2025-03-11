@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика действий</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Статистика действий пользователей</h1>
+
+    <!-- Первый график -->
+    <canvas id="actionChart" width="400" height="200"></canvas>
+
+    <!-- Второй график -->
+    <h2>Топ 5 площадок по активности</h2>
+    <canvas id="topVenuesChart" width="400" height="200"></canvas>
+
+    <script>
+        // Данные для первого графика (действия пользователей)
+        const ctxAction = document.getElementById('actionChart').getContext('2d');
+        const actionData = {
+            labels: {{ labels|safe }},
+            values: {{ values|safe }},
+        };
+
+        let actionChart = new Chart(ctxAction, {
+            type: 'bar',
+            data: {
+                labels: actionData.labels,
+                datasets: [{
+                    label: 'Количество действий',
+                    data: actionData.values,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Данные для второго графика (топ 5 площадок)
+        const ctxTopVenues = document.getElementById('topVenuesChart').getContext('2d');
+        const topVenuesData = {
+            labels: {{ top_labels|safe }},
+            values: {{ top_values|safe }},
+        };
+
+        let topVenuesChart = new Chart(ctxTopVenues, {
+            type: 'bar',
+            data: {
+                labels: topVenuesData.labels,
+                datasets: [{
+                    label: 'Количество действий на площадках',
+                    data: topVenuesData.values,
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const index = context.dataIndex;
+                                const count = context.raw; // Количество действий на данной площадке
+                                return `${context.label}: ${count} действий`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Обновление данных в реальном времени (если необходимо)
+        setInterval(() => {
+            fetch('/api/get-updated-data/')
+                .then(response => response.json())
+                .then(data => {
+                    actionData.labels = data.labels;
+                    actionData.values = data.values;
+                    actionChart.update(); // Обновляем первый график с новыми данными
+                    
+                    // Добавьте аналогичную логику для обновления второго графика (если необходимо)
+                });
+        }, 5000); // Обновление каждые 5 секунд
+    </script>
+</body>
+</html>

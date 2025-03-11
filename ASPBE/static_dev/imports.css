@@ -1,16 +1,57 @@
-@import url(style.css);
-@import url(add_venue.css);
+@import url(css_files/main/main.css);
+@import url(css_files/main/__cards/main__cards.css);
 @import url(css_files/header/header.css);
 @import url(css_files/logo/logo.css);
 
-
-
+@import url(css_files/venue/venue.css);
 @import url(css_files/venue/__description/venue__description.css);
 @import url(css_files/venue/__image/venue__image.css);
 @import url(css_files/venue/__info/venue__info.css);
+@import url(css_files/venue/__link/venue__link.css);
 @import url(css_files/venue/__location/venue__location.css);
 @import url(css_files/venue/__meta/venue__meta.css);
-@import url(css_files/venue/__title/venue__title.css);
-@import url(css_files/venue/venue.css);
-@import url(css_files/venue/__link/venue__link.css);
 @import url(css_files/venue/__span/venue__span.css);
+@import url(css_files/venue/__title/venue__title.css);
+@import url(css_files/venue/__li/venue__li.css);
+
+@import url(css_files/add__card/add__card.css);
+@import url(css_files/card/card.css);
+@import url(css_files/card/__title/card__title.css);
+@import url(css_files/card/__subtitle/card__subtitle.css);
+@import url(css_files/card/__img/card__img.css);
+@import url(css_files/card/__change/card__change.css);
+@import url(css_files/card/__actions/card__actions.css);
+
+@import url(css_files/modal/modal.css);
+@import url(css_files/modal/__btn/modal__btn.css);
+@import url(css_files/modal/__content/modal__content.css);
+@import url(css_files/modal/__close/modal__close.css);
+@import url(css_files/modal/__form/modal__form.css);
+
+@import url(css_files/login/login.css);
+@import url(css_files/login/__bg/login__bg.css);
+@import url(css_files/login/__box/login__box.css);
+@import url(css_files/login/__form/login__form.css);
+@import url(css_files/login/__inputs/login__inputs.css);
+@import url(css_files/login/__title/login__title.css);
+@import url(css_files/login/__input/login__input.css);
+
+@import url(css_files/place/place.css);
+@import url(css_files/place/__header/place__header.css);
+@import url(css_files/place/__subtitle/place__subtitle.css);
+@import url(css_files/place/__title/place__title.css);
+@import url(css_files/place/__about/place__about.css);
+@import url(css_files/place/__description/place__description.css);
+@import url(css_files/place/__info/place__info.css);
+@import url(css_files/place/__span/place__span.css);
+@import url(css_files/place/__info/-button/place__info-button.css);
+@import url(css_files/place/__info/-contact/place__info-contact.css);
+
+
+@import url(css_files/registration/registration.css);
+@import url(css_files/registration/__container/registration__container.css);
+@import url(css_files/registration/__title/registration__title.css);
+@import url(css_files/registration/__form/registration__form.css);
+@import url(css_files/registration/__button/registration__button.css);
+@import url(css_files/registration/__input/registration__input.css);
+@import url(css_files/registration/__account-type/registration__account-type.css);

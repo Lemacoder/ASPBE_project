@@ -1,0 +1,12 @@
+.modal__btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+}
+  
+.btn:hover {
+    background-color: #555;
+}

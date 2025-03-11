@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-a%z-82s4r&@zipr&q(@@nzc@l+-yzj$ewx4l-4rt)3acg-8mvo
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
-
+AUTH_USER_MODEL = 'registration.User'
 
 # Application definition
 
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'UserMainMenu.apps.UsermainmenuConfig',
     'HoldingMainMenu.apps.HoldingmainmenuConfig',
-    'registration.apps.RegistrationConfig'
+    'registration.apps.RegistrationConfig', 
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/send-verification'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ASPBE@gmail.com'  # Ваш email
+EMAIL_HOST_PASSWORD = 'adminadmin'     # Пароль от email

@@ -4,33 +4,37 @@
 
 {% block content %}
 
-<div class="container">
-    <!-- Add New Card Button -->
-    <div class="add-card">
-        <button id="openModal" class="btn">+</button>
+<div class="main__cards">
+
+    <div class="add__card">
+        <button id="openModal" class="modal__btn">+</button>
     </div>
     
     <ul>
         {% for post in posts %}
-        <li class="li_style">
+        <li class="venue__li">
             <div class="card">
-                <h3>{{ post.name }}</h3>
-                <p>{{ post.location }}</p>
-                <div class="actions">
-                    <button>🗑️</button> <!-- trasjjjkl;;kkh -->
-                    <button>👁️</button> <!-- eye -->
-                    <button>✏️</button> <!-- pen -->
+                <h3 class="card__title">{{ post.name }}</h3>
+                <p class="card__subtitle">{{ post.location }}</p>
+                <div class="card__actions">
+                    <button class="card__change">🗑️</button> 
+                    <button class="card__change">👁️</button> 
+                    <button class="card__change">✏️</button> 
+                    
+
                 </div>
             </div>
         </li>
         {% endfor %}
     </ul>
 
+    
+
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close" method="post">&times;</span>
+        <div class="modal__content">
+            <span id="closeModal" class="modal__close" method="post">&times;</span>
             <h2>Добавление</h2>
-            <form class="modal-form" action="{% url 'holdingmainpage' %}" method="post">
+            <form class="modal__form" action="{% url 'holdingmainpage' %}" method="post">
                 {% csrf_token %}
  
                 {% for f in form %}

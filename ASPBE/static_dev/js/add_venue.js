@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Получаем элементы
   const openModalButton = document.getElementById('openModal');
   const modal = document.getElementById('modal');
-  const closeModalButton = modal ? modal.querySelector('.close') : null;
+  const closeModalButton = modal ? modal.querySelector('.modal__close') : null;
 
   // Проверка наличия элементов
   if (!openModalButton || !modal || !closeModalButton) {

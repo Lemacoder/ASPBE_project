@@ -1,0 +1,10 @@
+.modal__content {
+    position: relative;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 20px;
+    width: calc(100% - 40px);
+    max-width: 600px;
+  }

@@ -1,0 +1,13 @@
+.registration__button {
+    background: #5a5a5a;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.registration__button:hover {
+    background: #777;
+}

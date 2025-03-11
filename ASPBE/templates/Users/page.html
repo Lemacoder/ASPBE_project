@@ -1,12 +1,29 @@
 {% extends 'Users/base.html' %}
 
-{% block content %}
-<h1>{{ title }}</h1>
+{% load static %}
 
-<div>
-    <p>{{ post.description }}</p>
-    <p>{{ post.location }}</p>
-    <p>{{ post.square }}</p>
-    <p>{{ post.capacity }}</p>
+{% block content %}
+<div class="place">
+    <div class="place__info">
+        <div class="place__like">
+            <a href="#" class="place__like-button">❤️</a>
+        </div>
+        <h1 class="place__title place__header">{{ title }}</h1>
+        <p class="place__subtitle place__header">{{ post.location }}</p>
+
+        <div class="place__description">
+            <h2 class="place__description place__about">О площадке</h2>
+            <p class="place__description place__span">{{ post.description }}</p>
+            
+            <p class="place__description place__span">{{ post.square }}</p>
+            <p class="place__description place__span">{{ post.capacity }}</p>
+        </div>
+    </div>
 </div>
+
+<div class="place__info-contact">
+    <a href="#" class="place__info-button">Связаться</a>
+</div>
+<script type="text/javascript" src="{% static 'js/control.js' %}"></script>
+
 {% endblock %}

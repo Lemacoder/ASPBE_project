@@ -7,12 +7,8 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="{% static 'imports.css' %}">
 </head>
-<body class="main_color">
+<body class="main">
     <header class="header">
-
-
-        
-
         <a href="{% url 'catalog_mainpage' %}" class="button-image">
             <img class="logo" src="{% static 'svg/menu.svg' %}" alt="Логотип">
         </a>
@@ -23,6 +19,7 @@
             <img class="logo" src="{% static 'svg/heart.png' %}" alt="Логотип">
         </a>
         <a>
+            {{ user }}
             <img class="logo" src="{% static 'svg/profile.svg' %}" alt="Логотип">
         </a>
 

@@ -1,0 +1,8 @@
+.contact__info-contact {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

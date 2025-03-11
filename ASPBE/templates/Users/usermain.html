@@ -1,14 +1,16 @@
 {% extends 'Users/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <ul>
     {% for post in posts %}
     <a href="{% url 'catalog_placepage' venid=post.id %}" class="venue__link">
-    <li class="li_style">
+    <li class="venue__li">
         <section class="venue">
             {% for photo in photos %}
-            <img class="venue-image" src="{{ photo.image.url }}" width="200" height="200" >
+            <img class="venue__image" src="{{ photo.image.url }}" width="200" height="200" >
             {% endfor %}
             <div class="venue__info">
                 <h2 class="venue__title">{{ post.name }}</h2>
@@ -28,5 +30,7 @@
     {% endfor %}
     
 </ul>
+
+<script type="text/javascript" src="{% static 'js/control.js' %}"></script>
 
 {% endblock %}

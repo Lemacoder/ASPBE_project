@@ -1,0 +1,8 @@
+.registration__container {
+    background: #3a3a3a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
