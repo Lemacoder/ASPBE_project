@@ -143,7 +143,6 @@ EMAIL_HOST = 'smtp.mail.ru' # Add your smtp server here
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587 # Add email's port here
 EMAIL_HOST_USER = 'aspbe_mail@mail.ru' # Add your email here
-EMAIL_HOST_PASSWORD = 'KsQwsVvrh3D4ZBtiKzX0' # A$PBE_$upp0rt
 DEFAULT_FROM_EMAIL = 'ASPBE_support@mail.ru'
 
 
