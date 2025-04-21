@@ -1,3 +1,6 @@
 Django
+django-user-accounts
+django-cryptography
+django-utils-six
 Pillow
-django-google-charts
+djangorestframework

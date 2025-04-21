@@ -10,23 +10,19 @@
         <button id="openModal" class="modal__btn">+</button>
     </div>
     
-    <ul>
-        {% for post in posts %}
-        <li class="venue__li">
-            <div class="card">
-                <h3 class="card__title">{{ post.name }}</h3>
-                <p class="card__subtitle">{{ post.location }}</p>
-                <div class="card__actions">
-                    <button class="card__change">🗑️</button> 
-                    <button class="card__change">👁️</button> 
-                    <button class="card__change">✏️</button> 
-                    
+    {% for post in posts %}
+    <div class="card">
+        <h3 class="card__title">{{ post.name }}</h3>
+        <p class="card__subtitle">{{ post.location }}</p>
+        <div class="card__actions">
+            <button class="card__change">🗑️</button> 
+            <button class="card__change">👁️</button> 
+            <button class="card__change">✏️</button> 
+        </div>
+    </div>
+    
+    {% endfor %}
 
-                </div>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
 
     
 

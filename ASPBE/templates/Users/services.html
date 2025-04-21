@@ -1,0 +1,26 @@
+{% extends 'Users/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+    <h1>Рекомендованные услуги для {{ venue.name }}</h1>
+
+    {% if recommended_services %}
+        <ul>
+            {% for item in recommended_services %}
+                <li>
+                    <div>
+                    <h1>{{ item.service.service_name }}</h1> - Support: {{ item.support }}%
+                    <p>{{ item.service.phone_number }}</p>
+                    <p>{{ item.service.contact_person }}</p>
+                    <p>{{ item.service.description }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет рекомендованных услуг для данной площадки.</p>
+    {% endif %}
+{% endblock %}

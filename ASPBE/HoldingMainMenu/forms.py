@@ -4,6 +4,6 @@ from .models import Venues
 class AddVenueForm(forms.ModelForm):
     class Meta:
         model = Venues
-        fields = '__all__'
+        fields = ['name', 'description', 'location', 'capacity', 'square', 'wardrobe', 'parking']
 
 

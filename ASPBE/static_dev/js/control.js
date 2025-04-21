@@ -116,5 +116,22 @@ document.addEventListener('click', function(event) {
 });
 
 
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('venue__like-button') || event.target.closest('.venue__like-button')) {
+        const target = event.target.closest('.venue__like-button');
+        if (target) {
+            const titleElement = document.querySelector('.venue__title');
+            const title = titleElement.textContent;
+            const result = {
+                venue_id: title,
+                action_type: 'Лайк'
+            };
+        
+            sendDataToServer(result);
+        }
+    }
+});
+
+
 
 

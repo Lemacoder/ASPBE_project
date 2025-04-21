@@ -12,13 +12,17 @@
     <li class="venue__li">
         <section class="venue">
             {% for photo in photos %}
+            
             <img class="venue__image" src="{{ photo.image.url }}" width="200" height="200" >
             {% endfor %}
             <div class="venue__info">
+                
                 <h2 class="venue__title">{{ venue.name }}</h2>
                 <p class="venue__description">{{ venue.description }}</p>
                 <p class="venue__location">{{ venue.location }}</p>
-                
+                <div class="venue__like">
+                    <a href="#" class="venue__like-button">❤️</a>
+                </div>
             </div>
             <div class="venue__meta">
                 <span class="venue__span">{{ venue.square }}</span>
@@ -45,10 +49,13 @@
             <img class="venue__image" src="{{ photo.image.url }}" width="200" height="200" >
             {% endfor %}
             <div class="venue__info">
+                
                 <h2 class="venue__title">{{ post.name }}</h2>
                 <p class="venue__description">{{ post.description }}</p>
                 <p class="venue__location">{{ post.location }}</p>
-                
+                <div class="venue__like">
+                    <a href="#" class="venue__like-button">❤️</a>
+                </div>
             </div>
             <div class="venue__meta">
                 <span class="venue__span">{{ post.square }}</span>

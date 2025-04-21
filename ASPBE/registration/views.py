@@ -1,108 +1,75 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, View
-from .utils import *
-from django.views import View
-
-from django.contrib.auth.tokens import default_token_generator as token_generator
-from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
-from django.urls import reverse
+from .forms import CreateUserForm
+from django.views.generic import View
+from .emails import send_activation_mail
+from django.utils.http import urlsafe_base64_decode
+from django.utils.encoding import force_str
+from .tokens import TokenGenerator
+from django.http import HttpResponse
+from django.contrib.auth import login
+from .models import User
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+class LoginFormView(LoginView):
+
+    template_name = 'registr/login.html'
+    success_url = '/'
 
 
-from django.contrib.auth.decorators import login_required
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
+class RegisterView(View):
 
 
-User=get_user_model()
+    def get(self,request):
 
-class LoginUser(DataMixin, LoginView):
-    form_class = AuthenticationForm
-    template_name = 'login_pages/login.html'
+        if not request.user.is_authenticated:
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Авторизация")
-        combined_context = dict(list(context.items()) + list(c_def.items()))        
-        return combined_context
+            form = CreateUserForm()
 
-    def form_valid(self, form):
-        user = form.get_user()
-        login(self.request, user)  # Авторизуем пользователя
-        return super().form_valid(form)
+            context = {"form":form}
+            return render(request,"registr/register.html",context)
+
+        return redirect("/")
 
 
-class RegisterUser(View):
-    template_name = 'login_pages/reg.html'
-    
-    def get(self, request):
-        context = {
-            'form': UserCreationForm()
-        }
-        return render(request, self.template_name, context)
-        
-    def post(self, request):
-        form = UserCreationForm(request.POST)
+    def post(self,request):
+
+        form = CreateUserForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            account_type = form.cleaned_data.get('account_type')
-            user = authenticate(username=username, password=password)
-            send_email_for_verify(request, user)
-            return redirect('confirm_email')
-            login(request, user)
-            
-            if account_type == 1:
-                return redirect('catalog_mainpage')
-            else: 
-                return redirect('holdingmainpage')
-            
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
-        
 
-class EmailVerify(View):
-    
-    def get(self, request, uidb64, token):
-        user = self.get_user(uidb64)
-    
-        if self.user is not None and token_generator.check_token(user, token):
-            user.email_verify = True
+            user = form.save(commit=False)
+            user.is_active = False
             user.save()
-            login(request, user)
-            return redirect('catalog_mainpage')
-        return redirect('invalid_verify')
+
+            send_activation_mail(userID=str(user.id))
+
+            return render(request,"registr/wait_email_confirmation.html",)
 
 
-
-    @staticmethod
-    def det_user(uidb64):
-        try:
-            uid = urlsafe_base64_decode(iudb64).decode()
-            user = User.object.get(pk=uid)
-        except (TypeError, ValueError, OverflowError, User.DoesNotExist, ValidationError):
-            user = None
-        return user
-
-def rec_pass_code(request):
-    return render(request, 'login_pages/password_recovery_code.html',  {'title': 'Восстановления пароля', 'subtitle': 'Код для восстановления пароля был отправлен на почту', 'next_step': 'recoveringpass'})
-
-def special_code(request):
-    return render(request, 'login_pages/password_recovery_code.html',  {'subtitle': 'На указанную вами почту был отправлен код подтверждения.Введите его в данное поле.', 'next_step': 'login'})
+        context = {"form":form}
+        return render(request,"registr/register.html",context)
 
 
+def ActivateEmailView(request, uidb64, token):
 
-def rec_pass(request):
-    return render(request, 'login_pages/password_recovery.html')
+    account_activation_token = TokenGenerator()
 
-
-
-#Авторизация делаем проверку по acount_type и раскидываем по приложениям  
-# пользователи в User Main holding 
-
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return render(request, 'registr/email_confirmed.html')
+    else:
+        return HttpResponse('Activation link is invalid!')
