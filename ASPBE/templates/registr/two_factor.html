@@ -1,0 +1,74 @@
+{% extends 'registr/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #333;
+            color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            background-color: #ddd;
+            border: none;
+            color: #333;
+        }
+
+        button {
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .timer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+
+<div class="container">
+    <h1>Доделать отправление кода и проверка </h1>
+    <h1>Введите код</h1>
+    <p>Код был отправлен на почту</p><form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Подтвердить</button>
+    </form>
+</div>
+
+{% endblock %}
+

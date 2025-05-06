@@ -26,3 +26,5 @@ class User(AbstractUser):
         ('1', 'Пользователь'),
         ('2', 'Представитель')
     ])
+    class Meta:
+       app_label = 'registration'

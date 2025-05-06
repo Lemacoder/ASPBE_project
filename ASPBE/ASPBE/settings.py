@@ -38,10 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_otp',
+    'django_otp.plugins.otp_email',
+    'two_factor',
+    'two_factor.plugins.email',
     'registration',
     'UserMainMenu.apps.UsermainmenuConfig',
     'HoldingMainMenu.apps.HoldingmainmenuConfig',
     'rest_framework',
+    'Sentence_BERT'
 ]
 
 AUTH_USER_MODEL = "registration.user"
@@ -54,6 +59,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_otp.middleware.OTPMiddleware'
+    
+    
 ]
 
 ROOT_URLCONF = 'ASPBE.urls'
@@ -138,13 +146,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru' # Add your smtp server here
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587 # Add email's port here
 EMAIL_HOST_USER = 'aspbe_mail@mail.ru' # Add your email here
+EMAIL_HOST_PASSWORD = 'KsQwsVvrh3D4ZBtiKzX0' # A$PBE_$upp0rt
 DEFAULT_FROM_EMAIL = 'ASPBE_support@mail.ru'
 
 
 LOGOUT_REDIRECT_URL = "/auth/"
-LOGIN_REDIRECT_URL = "/two_factor"
+LOGIN_REDIRECT_URL = "catalog_mainpage"
+
+LOGIN_URL = 'two_factor:login'
+LOGIN_REDIRECT_URL = 'profile'  # Ваш URL после успешного входа
+TWO_FACTOR_EMAIL_GATEWAY = 'two_factor.gateways.email.EmailDevice'

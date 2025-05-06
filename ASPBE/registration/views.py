@@ -13,6 +13,9 @@ from .models import User
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 class LoginFormView(LoginView):
 
     template_name = 'registr/login.html'
@@ -73,3 +76,12 @@ def ActivateEmailView(request, uidb64, token):
         return render(request, 'registr/email_confirmed.html')
     else:
         return HttpResponse('Activation link is invalid!')
+
+
+
+
+class CustomTwoFactorRedirectView(LoginRequiredMixin, View):
+    def get(self, request):
+        if request.user.account_type == 1:
+            return redirect("catalog_mainpage")
+        return redirect("holdingmainpage")

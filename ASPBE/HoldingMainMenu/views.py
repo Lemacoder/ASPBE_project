@@ -13,7 +13,8 @@ from .models import UserAction
 from collections import Counter
 
 
-
+# вынести в отдельный файл
+# -------------------------
 @api_view(['GET'])
 def get_updated_data(request):
     # Получаем все действия из базы данных
@@ -77,6 +78,8 @@ def action_statistics(request):
     
     return render(request, 'Holdings/statistics.html', context)
 
+#--------------------
+
 
 def mainpagehold(request):
     posts = Venues.objects.all()
@@ -91,3 +94,9 @@ def mainpagehold(request):
 
 def statistic(request):
     return render(request, 'Holdings/analytics.html')
+
+
+
+
+def nlp_recomend(request):
+    pass
